@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>La Porcada vs Costa Careyes — Comparativa de Mercado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{
+    --forest:#1a2820;
+    --forest-deep:#0f1813;
+    --cream:#f4ede0;
+    --cream-warm:#ebe1cc;
+    --bronze:#a07d4e;
+    --bronze-light:#c9a878;
+    --sage:#7a8970;
+    --charcoal:#2a2823;
+    --stone:#8a8378;
+    --rust:#8c5a3c;
+    --mex:#9c3d2e;
+  }
+  *{ -webkit-font-smoothing:antialiased; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Montserrat', sans-serif;
+    background:var(--cream);
+    color:var(--charcoal);
+    font-weight:300;
+    letter-spacing:0.02em;
+  }
+  .serif{ font-family:'Cormorant Garamond', serif; }
+  .display{ font-family:'Cormorant Garamond', serif; font-weight:300; letter-spacing:-0.01em; }
+
+  /* HERO */
+  .hero-wrap{
+    position:relative;
+    width:100%;
+    height:90vh;
+    min-height:640px;
+    overflow:hidden;
+    background:var(--forest-deep);
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:url("images/ECORESORT.png");
+    background-size:cover;
+    background-position:center;
+    filter:brightness(0.5) saturate(0.85);
+  }
+  .hero-vignette{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at center, rgba(0,0,0,0) 25%, rgba(0,0,0,0.65) 100%),
+      linear-gradient(to bottom, rgba(15,24,19,0.5) 0%, rgba(15,24,19,0.2) 40%, rgba(15,24,19,0.85) 100%);
+    z-index:2;
+  }
+  .hero-content{
+    position:relative;
+    z-index:5;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding:2.5rem 4rem;
+    color:var(--cream);
+  }
+  @media (max-width:768px){ .hero-content{ padding:1.5rem 1.5rem; } }
+
+  .grain::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity:0.3;
+    mix-blend-mode:overlay;
+    pointer-events:none;
+    z-index:3;
+  }
+
+  .lang-btn{
+    border:1px solid rgba(244,237,224,0.35);
+    color:var(--cream);
+    backdrop-filter:blur(8px);
+    background:rgba(15,24,19,0.25);
+    transition:all .35s ease;
+    font-size:11px;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+  }
+  .lang-btn:hover{ background:var(--bronze); border-color:var(--bronze); color:var(--cream); }
+  .lang-btn.active{ background:var(--cream); color:var(--forest-deep); border-color:var(--cream); }
+
+  .section-pad{ padding:7rem 2rem; }
+  @media (max-width:768px){ .section-pad{ padding:4.5rem 1.25rem; } }
+
+  .eyebrow{ font-size:11px; letter-spacing:0.4em; text-transform:uppercase; color:var(--bronze); font-weight:500; }
+  .rule{ height:1px; background:linear-gradient(to right, transparent, var(--bronze) 50%, transparent); width:80px; }
+
+  /* KEY METRICS */
+  .metric-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:rgba(160,125,78,0.25);
+    border:1px solid rgba(160,125,78,0.25);
+  }
+  @media (max-width:768px){ .metric-grid{ grid-template-columns:repeat(2,1fr); } }
+  .metric-cell{ background:var(--cream); padding:2rem 1.5rem; }
+  .metric-num{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2.6rem;
+    font-weight:300;
+    line-height:1;
+    color:var(--forest);
+    margin-bottom:0.4rem;
+  }
+  .metric-num em{ font-style:italic; color:var(--bronze); font-size:1.4rem; }
+  .metric-num .mex{ color:var(--mex); }
+  .metric-label{ font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--stone); }
+
+  /* COMPARE TABLE */
+  .compare-table{ width:100%; border-collapse:collapse; font-size:13px; }
+  .compare-table thead th{
+    text-align:left;
+    padding:1.2rem 1.4rem;
+    font-size:10px;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    border-bottom:1px solid var(--bronze);
+    background:var(--cream-warm);
+    vertical-align:bottom;
+  }
+  .compare-table thead th.careyes-h{ color:var(--mex); }
+  .compare-table thead th.porcada-h{ color:var(--forest); }
+  .compare-table tbody td{
+    padding:1.2rem 1.4rem;
+    border-bottom:1px solid rgba(42,40,35,0.1);
+    vertical-align:top;
+    line-height:1.55;
+  }
+  .compare-table tbody tr:hover{ background:rgba(160,125,78,0.04); }
+  .compare-table .criterio{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.15rem;
+    color:var(--forest);
+    font-weight:500;
+  }
+  .compare-table .criterio small{
+    display:block;
+    font-family:'Montserrat', sans-serif;
+    font-size:10px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--stone);
+    margin-top:3px;
+    font-weight:400;
+  }
+  .compare-table .careyes{ color:#5a3528; }
+  .compare-table .porcada{ color:var(--forest); font-weight:400; }
+  .compare-table .porcada strong{ color:var(--bronze); font-weight:500; }
+  .verdict-dot{
+    display:inline-block;
+    width:8px; height:8px;
+    border-radius:50%;
+    margin-right:8px;
+    vertical-align:middle;
+  }
+  .verdict-dot.porcada-wins{ background:var(--bronze); }
+  .verdict-dot.tie{ background:var(--sage); }
+  .verdict-dot.careyes-wins{ background:var(--mex); }
+
+  /* SIDE BY SIDE BLOCKS */
+  .vs-block{
+    display:grid;
+    grid-template-columns:1fr 80px 1fr;
+    gap:0;
+    align-items:stretch;
+    margin-bottom:5rem;
+  }
+  @media (max-width:768px){
+    .vs-block{ grid-template-columns:1fr; gap:1.5rem; }
+    .vs-divider{ display:none; }
+  }
+  .vs-side{ padding:2.5rem 2rem; }
+  .vs-side.careyes{ background:var(--cream-warm); border-left:2px solid var(--mex); }
+  .vs-side.porcada{ background:var(--forest-deep); color:var(--cream); border-left:2px solid var(--bronze); }
+  .vs-side.porcada .vs-label{ color:var(--bronze-light); }
+  .vs-side.porcada .vs-num{ color:var(--cream); }
+  .vs-side.porcada .vs-num em{ color:var(--bronze-light); }
+  .vs-side.porcada .vs-desc{ color:rgba(244,237,224,0.75); }
+  .vs-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--cream);
+    border-top:1px solid rgba(160,125,78,0.25);
+    border-bottom:1px solid rgba(160,125,78,0.25);
+  }
+  .vs-divider span{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.6rem;
+    font-style:italic;
+    color:var(--bronze);
+  }
+  .vs-label{ font-size:10px; letter-spacing:0.4em; text-transform:uppercase; color:var(--mex); margin-bottom:0.6rem; }
+  .vs-num{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2.8rem;
+    font-weight:300;
+    line-height:1;
+    color:var(--forest);
+    margin-bottom:0.6rem;
+  }
+  .vs-num em{ font-style:italic; color:var(--bronze); font-size:1.4rem; }
+  .vs-desc{ font-size:12px; line-height:1.65; color:var(--charcoal); opacity:0.85; }
+
+  /* PRODUCT CARD — Beach Houses & Oasis */
+  .product-card{
+    background:var(--cream);
+    border:1px solid rgba(160,125,78,0.3);
+    padding:2.5rem 2rem;
+    position:relative;
+  }
+  .product-card.oasis{
+    background:var(--forest-deep);
+    color:var(--cream);
+    border-color:rgba(201,168,120,0.4);
+  }
+  .product-card .pc-badge{
+    position:absolute; top:-12px; left:1.5rem;
+    background:var(--bronze);
+    color:var(--cream);
+    padding:5px 14px;
+    font-size:9px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .product-card.oasis .pc-badge{ background:var(--bronze-light); color:var(--forest-deep); }
+  .pc-name{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2rem;
+    font-weight:400;
+    margin:0.5rem 0 0.3rem 0;
+    line-height:1.1;
+  }
+  .product-card.oasis .pc-name{ color:var(--cream); }
+  .pc-price{
+    font-family:'Cormorant Garamond', serif;
+    font-size:2.2rem;
+    font-style:italic;
+    color:var(--bronze);
+    margin-bottom:1.5rem;
+    line-height:1;
+  }
+  .product-card.oasis .pc-price{ color:var(--bronze-light); }
+  .pc-specs{ display:grid; grid-template-columns:1fr 1fr; gap:0.8rem 1.5rem; margin-bottom:1.5rem; }
+  .pc-spec-key{
+    font-size:9px;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--stone);
+  }
+  .pc-spec-val{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.05rem;
+    color:var(--forest);
+  }
+  .product-card.oasis .pc-spec-val{ color:var(--cream); }
+  .pc-desc{
+    font-size:12px;
+    line-height:1.7;
+    color:var(--charcoal);
+    opacity:0.85;
+  }
+  .product-card.oasis .pc-desc{ color:rgba(244,237,224,0.8); }
+
+  /* MEMBERSHIP FUNNEL */
+  .funnel{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1px;
+    background:rgba(160,125,78,0.25);
+    border:1px solid rgba(160,125,78,0.25);
+  }
+  .funnel-stage{
+    background:var(--cream);
+    padding:2rem 2rem;
+    display:grid;
+    grid-template-columns:140px 1fr 200px;
+    gap:2rem;
+    align-items:center;
+  }
+  @media (max-width:768px){
+    .funnel-stage{ grid-template-columns:1fr; gap:0.6rem; }
+  }
+  .funnel-num{
+    font-family:'Cormorant Garamond', serif;
+    font-size:3rem;
+    font-weight:300;
+    color:var(--bronze);
+    line-height:1;
+    font-style:italic;
+  }
+  .funnel-stage.stage-3 .funnel-num{ color:var(--forest); }
+  .funnel-stage.stage-4 .funnel-num{ color:var(--rust); }
+  .funnel-title{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.4rem;
+    color:var(--forest);
+    margin-bottom:0.3rem;
+  }
+  .funnel-desc{ font-size:12px; line-height:1.6; color:var(--charcoal); }
+  .funnel-tag{
+    text-align:right;
+    font-size:10px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--stone);
+  }
+  @media (max-width:768px){ .funnel-tag{ text-align:left; } }
+
+  /* ISLAND LIFE GRID */
+  .island-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:rgba(201,168,120,0.25);
+    border:1px solid rgba(201,168,120,0.3);
+  }
+  @media (max-width:768px){ .island-grid{ grid-template-columns:1fr; } }
+  .island-cell{
+    background:var(--forest-deep);
+    color:var(--cream);
+    padding:2rem 1.6rem;
+  }
+  .island-icon{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.4rem;
+    font-style:italic;
+    color:var(--bronze-light);
+    margin-bottom:0.5rem;
+  }
+  .island-title{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.5rem;
+    color:var(--cream);
+    margin-bottom:0.5rem;
+  }
+  .island-desc{ font-size:12px; line-height:1.6; color:rgba(244,237,224,0.75); }
+
+  /* VERDICT */
+  .verdict-row{
+    display:grid;
+    grid-template-columns:60px 1fr 1.5fr 120px;
+    gap:1.5rem;
+    padding:1.5rem 0;
+    border-top:1px solid rgba(42,40,35,0.12);
+    align-items:center;
+  }
+  .verdict-row:last-child{ border-bottom:1px solid rgba(42,40,35,0.12); }
+  .verdict-num{ font-family:'Cormorant Garamond', serif; font-size:1.4rem; font-style:italic; color:var(--bronze); line-height:1.2; }
+  .verdict-criterio{ font-family:'Cormorant Garamond', serif; font-size:1.2rem; color:var(--forest); }
+  .verdict-arg{ font-size:12px; line-height:1.6; color:var(--charcoal); }
+  .verdict-tag{ text-align:right; font-size:9px; letter-spacing:0.3em; text-transform:uppercase; font-weight:600; }
+  .verdict-tag.porcada-wins{ color:var(--bronze); }
+  .verdict-tag.tie{ color:var(--sage); }
+  .verdict-tag.careyes-wins{ color:var(--mex); }
+  @media (max-width:768px){
+    .verdict-row{ grid-template-columns:40px 1fr; gap:0.8rem; }
+    .verdict-arg, .verdict-tag{ grid-column:2; }
+    .verdict-tag{ text-align:left; margin-top:0.4rem; }
+  }
+
+  /* MARQUEE */
+  .marquee{
+    overflow:hidden;
+    white-space:nowrap;
+    border-top:1px solid rgba(244,237,224,0.15);
+    border-bottom:1px solid rgba(244,237,224,0.15);
+    background:var(--forest-deep);
+    color:var(--cream-warm);
+    padding:1.4rem 0;
+  }
+  .marquee-inner{
+    display:inline-block;
+    animation:scroll 42s linear infinite;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.35rem;
+    font-style:italic;
+    letter-spacing:0.05em;
+  }
+  @keyframes scroll{ 0%{ transform:translateX(0); } 100%{ transform:translateX(-50%); } }
+  .marquee-inner span{ padding:0 2.5rem; }
+  .marquee-inner span::before{ content:"✦"; color:var(--bronze); margin-right:2.5rem; }
+
+  .reveal{ opacity:0; transform:translateY(30px); transition:opacity 1s ease, transform 1s ease; }
+  .reveal.visible{ opacity:1; transform:translateY(0); }
+
+  footer{ background:var(--forest-deep); color:var(--cream-warm); padding:5rem 2rem 2rem; }
+  .footer-logo{ font-family:'Cormorant Garamond', serif; font-size:2.4rem; font-weight:300; letter-spacing:0.05em; }
+  ::-webkit-scrollbar{ width:8px; }
+  ::-webkit-scrollbar-track{ background:var(--cream-warm); }
+  ::-webkit-scrollbar-thumb{ background:var(--bronze); }
+  .logo-mark{ width:60px; height:60px; object-fit:contain; filter:brightness(0) invert(1); opacity:0.95; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero-wrap grain">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <div class="flex items-start justify-between">
+      <div class="flex items-center gap-4">
+        <img src="images/LOGO.png" alt="TAKYMA" class="logo-mark" />
+        <div>
+          <div class="serif text-xl leading-none">Takyma</div>
+          <div class="text-[10px] tracking-[0.3em] uppercase opacity-70 mt-1">Investment Pioneer</div>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button class="lang-btn active px-3 py-2" data-lang="es">ES</button>
+        <button class="lang-btn px-3 py-2" data-lang="en">EN</button>
+      </div>
+    </div>
+
+    <div class="flex-1 flex flex-col justify-center items-start" style="max-width:980px;">
+      <div class="eyebrow mb-6" style="color:var(--bronze-light);" data-i18n="hero.eyebrow">Comparativa de mercado · Capítulo 24</div>
+      <h1 class="display text-[clamp(2.6rem,7.5vw,7rem)] leading-[0.95] mb-8">
+        <span data-i18n="hero.h1">La Porcada</span>
+        <em class="italic" style="color:var(--bronze-light);"> vs </em>
+        <span data-i18n="hero.h2">Costa Careyes</span>
+      </h1>
+      <p class="serif italic text-lg md:text-2xl max-w-2xl opacity-85" data-i18n="hero.sub">
+        Cincuenta y siete años de herencia mexicana frente a una isla con dos activos únicos: Beach Houses de USD 25M diseñadas por Denniston y Oasis por encargo desde USD 200M. Membresía selectiva, vida nocturna, hípica y autosuficiencia total.
+      </p>
+    </div>
+
+    <div class="flex items-end justify-between text-[11px] tracking-[0.3em] uppercase opacity-70">
+      <div data-i18n="hero.loc">Jalisco MX · Chiriquí PA · 2026</div>
+      <div class="hidden md:block serif italic normal-case tracking-normal text-sm opacity-70" data-i18n="hero.tag">
+        « La Porcada hereda el posicionamiento de Careyes y lo eleva a isla. »
+      </div>
+      <div class="text-right">© 2026 Takyma</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-inner">
+    <span data-i18n="m1">Beach Houses USD 25M · Denniston</span>
+    <span data-i18n="m2">Oasis desde USD 200M · por encargo</span>
+    <span data-i18n="m3">30.000 membresías → 500 finalistas → 50 villas</span>
+    <span data-i18n="m4">Casino · hípica · ganadería Brahman propia</span>
+    <span data-i18n="m5">Hospital isla · planta privada · manantial propio</span>
+    <span data-i18n="m1">Beach Houses USD 25M · Denniston</span>
+    <span data-i18n="m2">Oasis desde USD 200M · por encargo</span>
+    <span data-i18n="m3">30.000 membresías → 500 finalistas → 50 villas</span>
+    <span data-i18n="m4">Casino · hípica · ganadería Brahman propia</span>
+    <span data-i18n="m5">Hospital isla · planta privada · manantial propio</span>
+  </div>
+</div>
+
+<!-- CONTEXT -->
+<section class="section-pad" style="background:var(--cream);">
+  <div class="max-w-6xl mx-auto reveal">
+    <div class="mb-14">
+      <div class="eyebrow mb-4" data-i18n="ctx.eyebrow">El contexto</div>
+      <div class="rule mb-6"></div>
+      <h2 class="display text-4xl md:text-6xl leading-[1.05] mb-10" style="color:var(--forest);">
+        <span data-i18n="ctx.h1">Dos Pacíficos,</span>
+        <em class="italic" style="color:var(--bronze);" data-i18n="ctx.h2">dos edades.</em>
+      </h2>
+      <div class="grid md:grid-cols-2 gap-10 text-base leading-relaxed" style="color:var(--charcoal);">
+        <p data-i18n="ctx.p1">
+          <strong>Costa Careyes</strong> nació en 1968 cuando el italiano Gian Franco Brignone descubrió 15 km de costa virgen en Jalisco. En cinco décadas, construyó un universo de casitas bóvedas, villas privadas, castillos sobre el mar, dos canchas de polo y un hotel boutique. Es el benchmark consolidado del lujo mexicano, con brand equity de medio siglo y clientela europea heredada de generación en generación.
+        </p>
+        <p data-i18n="ctx.p2">
+          <strong>La Porcada</strong> nace ahora. Isla de 437 ha en Chiriquí, Panamá, con dos productos únicos: <strong>Beach Houses</strong> de USD 25M diseñadas por Denniston y <strong>Oasis</strong> por encargo desde USD 200M. Membresía selectiva de 30.000 a 500 finalistas, vida nocturna con casino y hípica, autosuficiencia con manantial propio, huerta, ganadería Brahman y hospital privado. Careyes no tiene nada de esto.
+        </p>
+      </div>
+    </div>
+
+    <div class="metric-grid">
+      <div class="metric-cell">
+        <div class="metric-num">1968<span class="mex" style="font-size:1.2rem;"> / 2026</span></div>
+        <div class="metric-label" data-i18n="k1">Careyes fundado / La Porcada lanza</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">2 <em>productos</em></div>
+        <div class="metric-label" data-i18n="k2">Beach Houses USD 25M · Oasis USD 200M+</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">500<em>/30.000</em></div>
+        <div class="metric-label" data-i18n="k3">Finalistas membresía · 1,67%</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">100<em>% isla</em></div>
+        <div class="metric-label" data-i18n="k4">Autosuficiencia · hospital · planta propia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS — BEACH HOUSES + OASIS -->
+<section class="section-pad" style="background:var(--cream-warm);">
+  <div class="max-w-6xl mx-auto reveal">
+
+    <div class="mb-14">
+      <div class="eyebrow mb-4" data-i18n="pr.eyebrow">Dos activos · dos escalas</div>
+      <div class="rule mb-6"></div>
+      <h2 class="display text-4xl md:text-6xl leading-[1.05] mb-6" style="color:var(--forest);">
+        <span data-i18n="pr.h1">Dos productos,</span>
+        <em class="italic" style="color:var(--bronze);" data-i18n="pr.h2">una sola isla.</em>
+      </h2>
+      <p class="serif text-lg max-w-3xl" style="color:var(--charcoal);" data-i18n="pr.lead">
+        Careyes vende villas premium de USD 10–25M construidas en los 80. La Porcada vende dos productos inéditos: Beach Houses minimalistas de USD 25M firmadas por Denniston, y Oasis por encargo desde USD 200M con servicio Aman. Dos escalas, dos filtros, una sola isla.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- BEACH HOUSES -->
+      <div class="product-card">
+        <span class="pc-badge" data-i18n="bh.badge">Activo I · En venta</span>
+        <h3 class="pc-name" data-i18n="bh.name">Beach Houses · Primera línea de mar</h3>
+        <div class="pc-price">25 MM USD</div>
+        <div class="pc-specs">
+          <div>
+            <div class="pc-spec-key" data-i18n="bh.k1">Parcela</div>
+            <div class="pc-spec-val">1.000 m²</div>
+          </div>
+          <div>
+            <div class="pc-spec-key" data-i18n="bh.k2">Construcción</div>
+            <div class="pc-spec-val">500 m² · 2 plantas</div>
+          </div>
+          <div>
+            <div class="pc-spec-key" data-i18n="bh.k3">Diseño</div>
+            <div class="pc-spec-val">Denniston Architects</div>
+          </div>
+          <div>
+            <div class="pc-spec-key" data-i18n="bh.k4">Piscina</div>
+            <div class="pc-spec-val">Infinita · borde playa</div>
+          </div>
+          <div>
+            <div class="pc-spec-key" data-i18n="bh.k5">Cubierta</div>
+            <div class="pc-spec-val">Techos ajardinados</div>
+          </div>
+          <div>
+            <div class="pc-spec-key" data-i18n="bh.k6">Energía</div>
+            <div class="pc-spec-val">Solar fotovoltaica + agua propia</div>
+          </div>
+        </div>
+        <p class="pc-desc" data-i18n="bh.desc">
+          Casa minimalista de 250 m² por planta (PB + P1), primera línea de mar, piscina infinita que limita la parcela con la playa. Régimen de condominio sujeto a membresía. 50 unidades totales. Filter: 500 finalistas sobre 30.000 membresías aprobadas.
+        </p>
+      </div>
+
+      <!-- OASIS -->
+      <div class="product-card oasis">
+        <span class="pc-badge" data-i18n="os.badge">Activo II · Por encargo</span>
+        <h3 class="pc-name" data-i18n="os.name">Oasis · La super-villa</h3>
+        <div class="pc-price">200 MM USD+</div>
+        <div class="pc-specs">
+          <div>
+            <div class="pc-spec-key" data-i18n="os.k1">Parcela</div>
+            <div class="pc-spec-val">1 hectárea · 10.000 m²</div>
+          </div>
+          <div>
+            <div class="pc-spec-key" data-i18n="os.k2">Casa principal</div>
+            <div class="pc-spec-val">1.500 m² · 2 plantas</div>
+          </div>
+          <div>
+            <div class="pc-spec-key" data-i18n="os.k3">Casa staff</div>
+            <div class="pc-spec-val">250 m²</div>
+          </div>
+          <div>
+            <div class="pc-spec-key" data-i18n="os.k4">Diseño</div>
+            <div class="pc-spec-val">Denniston · a medida</div>
+          </div>
+          <div>
+            <div class="pc-spec-key" data-i18n="os.k5">Servicio</div>
+            <div class="pc-spec-val">Aman en todo el resort</div>
+          </div>
+          <div>
+            <div class="pc-spec-key" data-i18n="os.k6">Proceso</div>
+            <div class="pc-spec-val">Por encargo · sin filter membresía</div>
+          </div>
+        </div>
+        <p class="pc-desc" data-i18n="os.desc">
+          8 Oasis por encargo, la escala más elitista del resort. Casa principal de 1.500 m² en dos plantas + casa de 250 m² para staff del propietario. Sin proceso de membresía: el cliente llega por invitación directa y orden de encargo. Servicio Aman integrado en toda la isla.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MEMBRESIA FUNNEL -->
+<section class="section-pad" style="background:var(--cream);">
+  <div class="max-w-5xl mx-auto reveal">
+
+    <div class="mb-12">
+      <div class="eyebrow mb-4" data-i18n="mb.eyebrow">Membresía · embudo selectivo</div>
+      <div class="rule mb-6"></div>
+      <h2 class="display text-4xl md:text-6xl leading-[1.05] mb-6" style="color:var(--forest);">
+        <span data-i18n="mb.h1">30.000 miembros.</span>
+        <em class="italic" style="color:var(--bronze);" data-i18n="mb.h2">50 villas.</em>
+      </h2>
+      <p class="serif text-lg max-w-3xl" style="color:var(--charcoal);" data-i18n="mb.lead">
+        Igual que en Careyes, la membresía se estudia y se aprueba o deniega. Pero en La Porcada el filtro es matemáticamente más estricto: solo 500 de 30.000 membresías aprobadas pasan a la final para adquirir las 50 Beach Houses. Los Oasis quedan fuera del proceso — son por encargo, más elitistas todavía.
+      </p>
+    </div>
+
+    <div class="funnel">
+      <div class="funnel-stage stage-1">
+        <div class="funnel-num">30.000</div>
+        <div>
+          <div class="funnel-title" data-i18n="mb.s1.t">Membresías potenciales</div>
+          <div class="funnel-desc" data-i18n="mb.s1.d">Aplicaciones estudiadas y aprobadas o denegadas tras revisión de perfil UHNWI. Primer filtro de calidad de cliente.</div>
+        </div>
+        <div class="funnel-tag" data-i18n="mb.s1.tag">Estudio &amp; aprobación</div>
+      </div>
+      <div class="funnel-stage stage-2">
+        <div class="funnel-num">500</div>
+        <div>
+          <div class="funnel-title" data-i18n="mb.s2.t">Finalistas seleccionados</div>
+          <div class="funnel-desc" data-i18n="mb.s2.d">Solo el 1,67% de las membresías aprobadas pasan a la final. Filtro estadístico más estricto que cualquier club privado del mundo.</div>
+        </div>
+        <div class="funnel-tag" data-i18n="mb.s2.tag">1,67% del total</div>
+      </div>
+      <div class="funnel-stage stage-3">
+        <div class="funnel-num">50</div>
+        <div>
+          <div class="funnel-title" data-i18n="mb.s3.t">Beach Houses en venta</div>
+          <div class="funnel-desc" data-i18n="mb.s3.d">50 Beach Houses de USD 25M en primera línea de mar, diseño Denniston, régimen de condominio. La oferta real cierra el embudo.</div>
+        </div>
+        <div class="funnel-tag" data-i18n="mb.s3.tag">USD 25M c/u</div>
+      </div>
+      <div class="funnel-stage stage-4">
+        <div class="funnel-num">8</div>
+        <div>
+          <div class="funnel-title" data-i18n="mb.s4.t">Oasis · fuera del proceso</div>
+          <div class="funnel-desc" data-i18n="mb.s4.d">Los 8 Oasis no entran en el embudo de membresía. Son por encargo directo, por invitación. La escala más elitista del resort.</div>
+        </div>
+        <div class="funnel-tag" data-i18n="mb.s4.tag">USD 200M+ · por encargo</div>
+      </div>
+    </div>
+
+    <div class="mt-8 p-6" style="border:1px dashed rgba(160,125,78,0.4); background:var(--cream-warm);">
+      <div class="text-[10px] tracking-[0.3em] uppercase mb-3" style="color:var(--bronze);" data-i18n="mb.note.k">El argumento financiero</div>
+      <p class="serif italic text-lg" style="color:var(--forest);" data-i18n="mb.note.b">
+        « Una membresía selectiva convierte 50 Beach Houses en 50 activos de reventa garantizada. La escasez matemática — 500 finalistas para 50 unidades — sostiene el precio de USD 25M y proyecta revalorización. »
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ISLAND LIFE -->
+<section class="section-pad" style="background:var(--forest); color:var(--cream);">
+  <div class="max-w-6xl mx-auto reveal">
+
+    <div class="mb-12">
+      <div class="eyebrow mb-4" style="color:var(--bronze-light);" data-i18n="il.eyebrow">Vida en la isla · lo que Careyes no tiene</div>
+      <div class="rule mb-6"></div>
+      <h2 class="display text-4xl md:text-6xl leading-[1.05] mb-6" style="color:var(--cream);">
+        <span data-i18n="il.h1">De día naturaleza.</span>
+        <em class="italic" style="color:var(--bronze-light);" data-i18n="il.h2">De noche, vida.</em>
+      </h2>
+      <p class="serif text-lg max-w-3xl opacity-90" data-i18n="il.lead">
+        Careyes cierra al anochecer. La Porcada no. La isla tiene vida nocturna con casino y espectáculos, torneos hípicos, doma y equitación. Produce su propia carne Brahman, su agua de manantial, su huerta. Y aloja al staff no residente en villa propia, con hospital privado y planta de energía exclusiva para membresías.
+      </p>
+    </div>
+
+    <div class="island-grid">
+      <div class="island-cell">
+        <div class="island-icon">i</div>
+        <div class="island-title" data-i18n="il.c1.t">Casino &amp; espectáculos</div>
+        <div class="island-desc" data-i18n="il.c1.d">Vida nocturna con casino privado, espectáculos en vivo y circuito de élite. Careyes no tiene casino.</div>
+      </div>
+      <div class="island-cell">
+        <div class="island-icon">ii</div>
+        <div class="island-title" data-i18n="il.c2.t">Hípica · torneos &amp; doma</div>
+        <div class="island-desc" data-i18n="il.c2.d">30 caballos, torneos hípicos, doma y equitación. Sin polo (la isla no lo permite), pero con programa ecuestre completo.</div>
+      </div>
+      <div class="island-cell">
+        <div class="island-icon">iii</div>
+        <div class="island-title" data-i18n="il.c3.t">Carne Brahman propia</div>
+        <div class="island-desc" data-i18n="il.c3.d">300 cabezas de ganado Brahman en libertad. Carne propia para F&amp;B del resort. Trazabilidad total.</div>
+      </div>
+      <div class="island-cell">
+        <div class="island-icon">iv</div>
+        <div class="island-title" data-i18n="il.c4.t">Manantial de agua</div>
+        <div class="island-desc" data-i18n="il.c4.d">Manantial propio en la isla. Agua embotellada del resort, sin dependencia externa. Ciclo hidrológico intacto.</div>
+      </div>
+      <div class="island-cell">
+        <div class="island-icon">v</div>
+        <div class="island-title" data-i18n="il.c5.t">Huerta orgánica</div>
+        <div class="island-desc" data-i18n="il.c5.d">Producción propia de frutas y verduras para F&amp;B. Cero emisiones de transporte, máxima frescura.</div>
+      </div>
+      <div class="island-cell">
+        <div class="island-icon">vi</div>
+        <div class="island-title" data-i18n="il.c6.t">Villa de empleados</div>
+        <div class="island-desc" data-i18n="il.c6.d">Villa dedicada a empleados no residentes en el continente. Staff alojado en isla, rotación controlada.</div>
+      </div>
+      <div class="island-cell">
+        <div class="island-icon">vii</div>
+        <div class="island-title" data-i18n="il.c7.t">Hospital privado</div>
+        <div class="island-desc" data-i18n="il.c7.d">Hospital propio en la isla. Atención médica 24/7 para huéspedes y staff. Careyes deriva a Puerto Vallarta.</div>
+      </div>
+      <div class="island-cell">
+        <div class="island-icon">viii</div>
+        <div class="island-title" data-i18n="il.c8.t">Planta de energía privada</div>
+        <div class="island-desc" data-i18n="il.c8.d">Planta exclusiva para membresías de la isla. Autonomía energética total, sin red pública.</div>
+      </div>
+      <div class="island-cell">
+        <div class="island-icon">ix</div>
+        <div class="island-title" data-i18n="il.c9.t">Aman en toda la isla</div>
+        <div class="island-desc" data-i18n="il.c9.d">Servicio Aman integrado, no solo en hotel. Cada villa, cada Oasis, cada experiencia. Operación de clase mundial.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICE COMPARISON VS CAREYES -->
+<section class="section-pad" style="background:var(--cream);">
+  <div class="max-w-6xl mx-auto reveal">
+
+    <div class="mb-12">
+      <div class="eyebrow mb-4" data-i18n="px.eyebrow">Comparativa de precios</div>
+      <div class="rule mb-6"></div>
+      <h2 class="display text-4xl md:text-6xl leading-[1.05] mb-6" style="color:var(--forest);">
+        <span data-i18n="px.h1">Lo que cuesta</span>
+        <em class="italic" style="color:var(--bronze);" data-i18n="px.h2">lo que se cobra.</em>
+      </h2>
+    </div>
+
+    <div class="vs-block">
+      <div class="vs-side careyes">
+        <div class="vs-label" data-i18n="px.cy.label">Costa Careyes · villas premium</div>
+        <div class="vs-num">10–25<em>M USD</em></div>
+        <div class="vs-desc" data-i18n="px.cy.desc">
+          Rango documentado: Casa Encantada USD 9,99M, villa 6/8 USD 15M, oceanfront trophy USD 25M. Construcción de los 80–90s, sin sistema sostenible, sin membresía selectiva matemática.
+        </div>
+      </div>
+      <div class="vs-divider"><span data-i18n="px.vs">vs</span></div>
+      <div class="vs-side porcada">
+        <div class="vs-label" data-i18n="px.po.label">La Porcada · Beach Houses</div>
+        <div class="vs-num">25<em>M USD</em></div>
+        <div class="vs-desc" data-i18n="px.po.desc">
+          50 Beach Houses, 1.000 m² parcela, 500 m² construcción, Denniston, piscina infinita a pie de playa, techos ajardinados, energía solar y agua propia. Membresía: 500 finalistas de 30.000.
+        </div>
+      </div>
+    </div>
+
+    <div class="vs-block">
+      <div class="vs-side careyes">
+        <div class="vs-label" data-i18n="px.cy2.label">Careyes · alquiler diario</div>
+        <div class="vs-num">2.500–7.000<em>USD/night</em></div>
+        <div class="vs-desc" data-i18n="px.cy2.desc">
+          Villa Careyes 4 (6 beds, 14 pax): USD 2.500–6.800/noche. Temporada alta con chef USD 7.000/noche. ADR hotel boutique USD 800–1.500.
+        </div>
+      </div>
+      <div class="vs-divider"><span data-i18n="px.vs">vs</span></div>
+      <div class="vs-side porcada">
+        <div class="vs-label" data-i18n="px.po2.label">La Porcada · Beach Houses · gestión Aman</div>
+        <div class="vs-num">35.000<em>USD+/night</em></div>
+        <div class="vs-desc" data-i18n="px.po2.desc">
+          Beach Houses en régimen de condominio gestionado por Aman. El propietario disfruta 45 días al año; el resto Aman opera la unidad como hotel premium (ADR estimado USD 35.000+/noche). Los Oasis quedan fuera de cualquier régimen de alquiler o condominio: son posesión pura, tan elitistas que no entran en el mercado.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DETAILED TABLE -->
+<section class="section-pad" style="background:var(--cream-warm);">
+  <div class="max-w-6xl mx-auto reveal">
+
+    <div class="mb-12">
+      <div class="eyebrow mb-4" data-i18n="tb.eyebrow">Matriz comparativa · 12 criterios</div>
+      <div class="rule mb-6"></div>
+      <h2 class="display text-4xl md:text-6xl leading-[1.05] mb-6" style="color:var(--forest);">
+        <span data-i18n="tb.h1">Donde se gana,</span>
+        <em class="italic" style="color:var(--bronze);" data-i18n="tb.h2">donde se hereda.</em>
+      </h2>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th data-i18n="tb.c1">Criterio</th>
+            <th class="careyes-h" data-i18n="tb.c2">Costa Careyes</th>
+            <th class="porcada-h" data-i18n="tb.c3">La Porcada</th>
+            <th data-i18n="tb.c4">Veredicto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="criterio" data-i18n="tb.r1.c">Beach House precio<small>USD · rango</small></td>
+            <td class="careyes" data-i18n="tb.r1.cy">USD 10–25M · construcción 80s</td>
+            <td class="porcada" data-i18n="tb.r1.po"><strong>USD 25M</strong> · Denniston · 500 m²</td>
+            <td><span class="verdict-dot porcada-wins"></span><span data-i18n="tb.r1.v">La Porcada lidera</span></td>
+          </tr>
+          <tr>
+            <td class="criterio" data-i18n="tb.r2.c">Villa trophy precio<small>USD · top segment</small></td>
+            <td class="careyes" data-i18n="tb.r2.cy">USD 25M (oceanfront)</td>
+            <td class="porcada" data-i18n="tb.r2.po"><strong>USD 200M+</strong> · Oasis por encargo</td>
+            <td><span class="verdict-dot porcada-wins"></span><span data-i18n="tb.r2.v">La Porcada lidera</span></td>
+          </tr>
+          <tr>
+            <td class="criterio" data-i18n="tb.r3.c">Membresía selectiva<small>filtro de comprador</small></td>
+            <td class="careyes" data-i18n="tb.r3.cy">Sí · aprobación estudio de perfil</td>
+            <td class="porcada" data-i18n="tb.r3.po"><strong>30.000 → 500 finalistas</strong> → 50 villas</td>
+            <td><span class="verdict-dot porcada-wins"></span><span data-i18n="tb.r3.v">La Porcada lidera</span></td>
+          </tr>
+          <tr>
+            <td class="criterio" data-i18n="tb.r4.c">Diseño arquitectónico<small>firma y autoría</small></td>
+            <td class="careyes" data-i18n="tb.r4.cy">Varios · Brignone, Villaseñor</td>
+            <td class="porcada" data-i18n="tb.r4.po"><strong>Denniston Architects</strong> en ambos productos</td>
+            <td><span class="verdict-dot porcada-wins"></span><span data-i18n="tb.r4.v">La Porcada lidera</span></td>
+          </tr>
+          <tr>
+            <td class="criterio" data-i18n="tb.r5.c">Sostenibilidad<small>energía y materiales</small></td>
+            <td class="careyes" data-i18n="tb.r5.cy">Concreto de los 80 · sin sistema renovable</td>
+            <td class="porcada" data-i18n="tb.r5.po"><strong>Solar + agua propia + CLT + techos ajardinados</strong></td>
+            <td><span class="verdict-dot porcada-wins"></span><span data-i18n="tb.r5.v">La Porcada lidera</span></td>
+          </tr>
+          <tr>
+            <td class="criterio" data-i18n="tb.r6.c">Vida nocturna<small>casino y espectáculos</small></td>
+            <td class="careyes" data-i18n="tb.r6.cy">Restaurante + bar · sin casino</td>
+            <td class="porcada" data-i18n="tb.r6.po"><strong>Casino privado + espectáculos en vivo</strong></td>
+            <td><span class="verdict-dot porcada-wins"></span><span data-i18n="tb.r6.v">La Porcada lidera</span></td>
+          </tr>
+          <tr>
+            <td class="criterio" data-i18n="tb.r7.c">Hípica &amp; equitación<small>programa ecuestre</small></td>
+            <td class="careyes" data-i18n="tb.r7.cy"><strong>Polo · 2 canchas · 150 caballos</strong></td>
+            <td class="porcada" data-i18n="tb.r7.po">Doma · torneos · 30 caballos · sin polo</td>
+            <td><span class="verdict-dot careyes-wins"></span><span data-i18n="tb.r7.v">Careyes referente</span></td>
+          </tr>
+          <tr>
+            <td class="criterio" data-i18n="tb.r8.c">Autosuficiencia alimentaria<small>carne, agua, huerta</small></td>
+            <td class="careyes" data-i18n="tb.r8.cy">Importación · sin producción propia</td>
+            <td class="porcada" data-i18n="tb.r8.po"><strong>Brahman + manantial + huerta propia</strong></td>
+            <td><span class="verdict-dot porcada-wins"></span><span data-i18n="tb.r8.v">La Porcada lidera</span></td>
+          </tr>
+          <tr>
+            <td class="criterio" data-i18n="tb.r9.c">Hospital &amp; salud<small>atención en isla</small></td>
+            <td class="careyes" data-i18n="tb.r9.cy">Deriva a Puerto Vallarta · 2,5h</td>
+            <td class="porcada" data-i18n="tb.r9.po"><strong>Hospital privado en isla</strong> · 24/7</td>
+            <td><span class="verdict-dot porcada-wins"></span><span data-i18n="tb.r9.v">La Porcada lidera</span></td>
+          </tr>
+          <tr>
+            <td class="criterio" data-i18n="tb.r10.c">Autonomía energética<small>planta propia</small></td>
+            <td class="careyes" data-i18n="tb.r10.cy">Red pública CFE</td>
+            <td class="porcada" data-i18n="tb.r10.po"><strong>Planta privada</strong> para membresías isla</td>
+            <td><span class="verdict-dot porcada-wins"></span><span data-i18n="tb.r10.v">La Porcada lidera</span></td>
+          </tr>
+          <tr>
+            <td class="criterio" data-i18n="tb.r11.c">Estacionalidad<small>ventana operativa</small></td>
+            <td class="careyes" data-i18n="tb.r11.cy">Nov–abr temporada · may–oct huracanes</td>
+            <td class="porcada" data-i18n="tb.r11.po"><strong>Todo el año</strong> · fuera cinturón huracanes</td>
+            <td><span class="verdict-dot porcada-wins"></span><span data-i18n="tb.r11.v">La Porcada lidera</span></td>
+          </tr>
+          <tr>
+            <td class="criterio" data-i18n="tb.r12.c">Brand equity<small>años de posicionamiento</small></td>
+            <td class="careyes" data-i18n="tb.r12.cy"><strong>57 años</strong> · Brignone · mythology consolidada</td>
+            <td class="porcada" data-i18n="tb.r12.po">Nacimiento · Aman co-escribe marca día 1</td>
+            <td><span class="verdict-dot careyes-wins"></span><span data-i18n="tb.r12.v">Careyes referente</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-6 text-[11px] serif italic" style="color:var(--stone);" data-i18n="tb.note">
+      Fuentes: careyes.com · lprluxury.com · jamesedition.com · mayaluxe.com · wikipedia.org · datos internos La Porcada 2026. Cifras indicativas de mercado.
+    </div>
+
+  </div>
+</section>
+
+<!-- THE THESIS -->
+<section class="section-pad" style="background:var(--forest); color:var(--cream);">
+  <div class="max-w-4xl mx-auto reveal">
+    <div class="eyebrow mb-6" style="color:var(--bronze-light);" data-i18n="th.eyebrow">La tesis</div>
+    <div class="rule mb-6"></div>
+    <h2 class="display text-4xl md:text-7xl leading-[1.05] mb-10">
+      <span data-i18n="th.h1">No competimos con Careyes.</span><br/>
+      <em class="italic" style="color:var(--bronze-light);" data-i18n="th.h2">Lo elevamos a isla.</em>
+    </h2>
+    <div class="space-y-6 text-base leading-relaxed opacity-90">
+      <p data-i18n="th.p1">
+        Careyes seguirá siendo el benchmark histórico del lujo mexicano. Sus 57 años, su polo, su clientela italiana heredada —nada de eso está en discusión. Lo que decimos es distinto: cuando un inversor global compara dónde colocar USD 25M en una Beach House o USD 200M en un Oasis, La Porcada gana en diez de doce criterios técnicos.
+      </p>
+      <p data-i18n="th.p2">
+        Gana en arquitectura porque Denniston firma ambos productos. Gana en membresía porque el embudo 30.000 → 500 → 50 es matemáticamente más estricto que cualquier club privado. Gana en vida porque la isla tiene casino, hípica y espectáculos donde Careyes cierra al anochecer. Gana en autosuficiencia porque produce su propia carne, su agua, su energía. Gana en salud porque tiene hospital en isla. Gana en estacionalidad porque Chiriquí no tiene huracanes.
+      </p>
+      <p data-i18n="th.p3">
+        Careyes conserva dos ventajas: 57 años de historia y el polo. La Porcada no necesita ni una ni otro. La historia la aporta Aman. El polo no encaja en una isla de 437 ha donde el 95% es bosque protegido. Y eso, paradójicamente, es también una victoria: en La Porcada, lo que no se hace es tan importante como lo que se hace.
+      </p>
+    </div>
+    <div class="mt-12 p-6" style="border:1px dashed rgba(201,168,120,0.4);">
+      <div class="text-[10px] tracking-[0.3em] uppercase mb-3" style="color:var(--bronze-light);" data-i18n="th.kicker">Conclusión para el comité de inversión</div>
+      <p class="serif italic text-xl md:text-2xl" style="color:var(--cream);" data-i18n="th.close">
+        « La Porcada no es el próximo Careyes. Es lo que Careyes habría sido si se hubiera construido hoy, en una isla, con Denniston, con Aman, con casino, con hospital propio y sin huracanes. »
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-10 mb-12 pb-10" style="border-bottom:1px solid rgba(244,237,224,0.15);">
+      <div>
+        <img src="images/LOGO.png" alt="Takyma" class="logo-mark mb-4" />
+        <div class="footer-logo" style="color:var(--cream);">Takyma</div>
+        <div class="text-[10px] tracking-[0.35em] uppercase opacity-60 mt-2" data-i18n="foot.tag">Investment Pioneer</div>
+      </div>
+      <div class="text-right text-[11px] tracking-[0.25em] uppercase opacity-70 leading-relaxed">
+        <div data-i18n="foot.l1">Isla Porcada · Chiriquí · Panamá</div>
+        <div class="mt-3 opacity-60">Beach Houses · Oasis · Aman</div>
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] tracking-[0.2em] uppercase opacity-60">
+      <div>© 2026 EcoResort La Porcada · by Takyma Investment Pioneer</div>
+      <div class="serif italic normal-case tracking-normal text-sm opacity-80" data-i18n="foot.motto">
+        « La naturaleza no se domestica, se reverencia. »
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const translations = {
+  es: {
+    "hero.eyebrow":"Comparativa de mercado · Capítulo 24",
+    "hero.h1":"La Porcada",
+    "hero.h2":"Costa Careyes",
+    "hero.sub":"Cincuenta y siete años de herencia mexicana frente a una isla con dos activos únicos: Beach Houses de USD 25M diseñadas por Denniston y Oasis por encargo desde USD 200M. Membresía selectiva, vida nocturna, hípica y autosuficiencia total.",
+    "hero.loc":"Jalisco MX · Chiriquí PA · 2026",
+    "hero.tag":"« La Porcada hereda el posicionamiento de Careyes y lo eleva a isla. »",
+    "m1":"Beach Houses USD 25M · Denniston",
+    "m2":"Oasis desde USD 200M · por encargo",
+    "m3":"30.000 membresías → 500 finalistas → 50 villas",
+    "m4":"Casino · hípica · ganadería Brahman propia",
+    "m5":"Hospital isla · planta privada · manantial propio",
+    "ctx.eyebrow":"El contexto",
+    "ctx.h1":"Dos Pacíficos,",
+    "ctx.h2":"dos edades.",
+    "ctx.p1":"<strong>Costa Careyes</strong> nació en 1968 cuando el italiano Gian Franco Brignone descubrió 15 km de costa virgen en Jalisco. En cinco décadas, construyó un universo de casitas bóvedas, villas privadas, castillos sobre el mar, dos canchas de polo y un hotel boutique. Es el benchmark consolidado del lujo mexicano, con brand equity de medio siglo y clientela europea heredada de generación en generación.",
+    "ctx.p2":"<strong>La Porcada</strong> nace ahora. Isla de 437 ha en Chiriquí, Panamá, con dos productos únicos: <strong>Beach Houses</strong> de USD 25M diseñadas por Denniston y <strong>Oasis</strong> por encargo desde USD 200M. Membresía selectiva de 30.000 a 500 finalistas, vida nocturna con casino y hípica, autosuficiencia con manantial propio, huerta, ganadería Brahman y hospital privado. Careyes no tiene nada de esto.",
+    "k1":"Careyes fundado / La Porcada lanza",
+    "k2":"Beach Houses USD 25M · Oasis USD 200M+",
+    "k3":"Finalistas membresía · 1,67%",
+    "k4":"Autosuficiencia · hospital · planta propia",
+    "pr.eyebrow":"Dos activos · dos escalas",
+    "pr.h1":"Dos productos,",
+    "pr.h2":"una sola isla.",
+    "pr.lead":"Careyes vende villas premium de USD 10–25M construidas en los 80. La Porcada vende dos productos inéditos: Beach Houses minimalistas de USD 25M firmadas por Denniston, y Oasis por encargo desde USD 200M con servicio Aman. Dos escalas, dos filtros, una sola isla.",
+    "bh.badge":"Activo I · En venta",
+    "bh.name":"Beach Houses · Primera línea de mar",
+    "bh.k1":"Parcela","bh.k2":"Construcción","bh.k3":"Diseño","bh.k4":"Piscina","bh.k5":"Cubierta","bh.k6":"Energía",
+    "bh.desc":"Casa minimalista de 250 m² por planta (PB + P1), primera línea de mar, piscina infinita que limita la parcela con la playa. Régimen de condominio sujeto a membresía. 50 unidades totales. Filter: 500 finalistas sobre 30.000 membresías aprobadas.",
+    "os.badge":"Activo II · Por encargo",
+    "os.name":"Oasis · La super-villa",
+    "os.k1":"Parcela","os.k2":"Casa principal","os.k3":"Casa staff","os.k4":"Diseño","os.k5":"Servicio","os.k6":"Proceso",
+    "os.desc":"8 Oasis por encargo, la escala más elitista del resort. Casa principal de 1.500 m² en dos plantas + casa de 250 m² para staff del propietario. Sin proceso de membresía: el cliente llega por invitación directa y orden de encargo. Servicio Aman integrado en toda la isla.",
+    "mb.eyebrow":"Membresía · embudo selectivo",
+    "mb.h1":"30.000 miembros.",
+    "mb.h2":"50 villas.",
+    "mb.lead":"Igual que en Careyes, la membresía se estudia y se aprueba o deniega. Pero en La Porcada el filtro es matemáticamente más estricto: solo 500 de 30.000 membresías aprobadas pasan a la final para adquirir las 50 Beach Houses. Los Oasis quedan fuera del proceso — son por encargo, más elitistas todavía.",
+    "mb.s1.t":"Membresías potenciales",
+    "mb.s1.d":"Aplicaciones estudiadas y aprobadas o denegadas tras revisión de perfil UHNWI. Primer filtro de calidad de cliente.",
+    "mb.s1.tag":"Estudio & aprobación",
+    "mb.s2.t":"Finalistas seleccionados",
+    "mb.s2.d":"Solo el 1,67% de las membresías aprobadas pasan a la final. Filtro estadístico más estricto que cualquier club privado del mundo.",
+    "mb.s2.tag":"1,67% del total",
+    "mb.s3.t":"Beach Houses en venta",
+    "mb.s3.d":"50 Beach Houses de USD 25M en primera línea de mar, diseño Denniston, régimen de condominio. La oferta real cierra el embudo.",
+    "mb.s3.tag":"USD 25M c/u",
+    "mb.s4.t":"Oasis · fuera del proceso",
+    "mb.s4.d":"Los 8 Oasis no entran en el embudo de membresía. Son por encargo directo, por invitación. La escala más elitista del resort.",
+    "mb.s4.tag":"USD 200M+ · por encargo",
+    "mb.note.k":"El argumento financiero",
+    "mb.note.b":"« Una membresía selectiva convierte 50 Beach Houses en 50 activos de reventa garantizada. La escasez matemática — 500 finalistas para 50 unidades — sostiene el precio de USD 25M y proyecta revalorización. »",
+    "il.eyebrow":"Vida en la isla · lo que Careyes no tiene",
+    "il.h1":"De día naturaleza.",
+    "il.h2":"De noche, vida.",
+    "il.lead":"Careyes cierra al anochecer. La Porcada no. La isla tiene vida nocturna con casino y espectáculos, torneos hípicos, doma y equitación. Produce su propia carne Brahman, su agua de manantial, su huerta. Y aloja al staff no residente en villa propia, con hospital privado y planta de energía exclusiva para membresías.",
+    "il.c1.t":"Casino & espectáculos","il.c1.d":"Vida nocturna con casino privado, espectáculos en vivo y circuito de élite. Careyes no tiene casino.",
+    "il.c2.t":"Hípica · torneos & doma","il.c2.d":"30 caballos, torneos hípicos, doma y equitación. Sin polo (la isla no lo permite), pero con programa ecuestre completo.",
+    "il.c3.t":"Carne Brahman propia","il.c3.d":"300 cabezas de ganado Brahman en libertad. Carne propia para F&B del resort. Trazabilidad total.",
+    "il.c4.t":"Manantial de agua","il.c4.d":"Manantial propio en la isla. Agua embotellada del resort, sin dependencia externa. Ciclo hidrológico intacto.",
+    "il.c5.t":"Huerta orgánica","il.c5.d":"Producción propia de frutas y verduras para F&B. Cero emisiones de transporte, máxima frescura.",
+    "il.c6.t":"Villa de empleados","il.c6.d":"Villa dedicada a empleados no residentes en el continente. Staff alojado en isla, rotación controlada.",
+    "il.c7.t":"Hospital privado","il.c7.d":"Hospital propio en la isla. Atención médica 24/7 para huéspedes y staff. Careyes deriva a Puerto Vallarta.",
+    "il.c8.t":"Planta de energía privada","il.c8.d":"Planta exclusiva para membresías de la isla. Autonomía energética total, sin red pública.",
+    "il.c9.t":"Aman en toda la isla","il.c9.d":"Servicio Aman integrado, no solo en hotel. Cada villa, cada Oasis, cada experiencia. Operación de clase mundial.",
+    "px.eyebrow":"Comparativa de precios",
+    "px.h1":"Lo que cuesta",
+    "px.h2":"lo que se cobra.",
+    "px.cy.label":"Costa Careyes · villas premium",
+    "px.cy.desc":"Rango documentado: Casa Encantada USD 9,99M, villa 6/8 USD 15M, oceanfront trophy USD 25M. Construcción de los 80–90s, sin sistema sostenible, sin membresía selectiva matemática.",
+    "px.vs":"vs",
+    "px.po.label":"La Porcada · Beach Houses",
+    "px.po.desc":"50 Beach Houses, 1.000 m² parcela, 500 m² construcción, Denniston, piscina infinita a pie de playa, techos ajardinados, energía solar y agua propia. Membresía: 500 finalistas de 30.000.",
+    "px.cy2.label":"Careyes · alquiler diario",
+    "px.cy2.desc":"Villa Careyes 4 (6 beds, 14 pax): USD 2.500–6.800/noche. Temporada alta con chef USD 7.000/noche. ADR hotel boutique USD 800–1.500.",
+    "px.po2.label":"La Porcada · Beach Houses · gestión Aman",
+    "px.po2.desc":"Beach Houses en régimen de condominio gestionado por Aman. El propietario disfruta 45 días al año; el resto Aman opera la unidad como hotel premium (ADR estimado USD 35.000+/noche). Los Oasis quedan fuera de cualquier régimen de alquiler o condominio: son posesión pura, tan elitistas que no entran en el mercado.",
+    "tb.eyebrow":"Matriz comparativa · 12 criterios",
+    "tb.h1":"Donde se gana,",
+    "tb.h2":"donde se hereda.",
+    "tb.c1":"Criterio","tb.c2":"Costa Careyes","tb.c3":"La Porcada","tb.c4":"Veredicto",
+    "tb.r1.c":"Beach House precio<small>USD · rango</small>","tb.r1.cy":"USD 10–25M · construcción 80s","tb.r1.po":"<strong>USD 25M</strong> · Denniston · 500 m²","tb.r1.v":"La Porcada lidera",
+    "tb.r2.c":"Villa trophy precio<small>USD · top segment</small>","tb.r2.cy":"USD 25M (oceanfront)","tb.r2.po":"<strong>USD 200M+</strong> · Oasis por encargo","tb.r2.v":"La Porcada lidera",
+    "tb.r3.c":"Membresía selectiva<small>filtro de comprador</small>","tb.r3.cy":"Sí · aprobación estudio de perfil","tb.r3.po":"<strong>30.000 → 500 finalistas</strong> → 50 villas","tb.r3.v":"La Porcada lidera",
+    "tb.r4.c":"Diseño arquitectónico<small>firma y autoría</small>","tb.r4.cy":"Varios · Brignone, Villaseñor","tb.r4.po":"<strong>Denniston Architects</strong> en ambos productos","tb.r4.v":"La Porcada lidera",
+    "tb.r5.c":"Sostenibilidad<small>energía y materiales</small>","tb.r5.cy":"Concreto de los 80 · sin sistema renovable","tb.r5.po":"<strong>Solar + agua propia + CLT + techos ajardinados</strong>","tb.r5.v":"La Porcada lidera",
+    "tb.r6.c":"Vida nocturna<small>casino y espectáculos</small>","tb.r6.cy":"Restaurante + bar · sin casino","tb.r6.po":"<strong>Casino privado + espectáculos en vivo</strong>","tb.r6.v":"La Porcada lidera",
+    "tb.r7.c":"Hípica & equitación<small>programa ecuestre</small>","tb.r7.cy":"<strong>Polo · 2 canchas · 150 caballos</strong>","tb.r7.po":"Doma · torneos · 30 caballos · sin polo","tb.r7.v":"Careyes referente",
+    "tb.r8.c":"Autosuficiencia alimentaria<small>carne, agua, huerta</small>","tb.r8.cy":"Importación · sin producción propia","tb.r8.po":"<strong>Brahman + manantial + huerta propia</strong>","tb.r8.v":"La Porcada lidera",
+    "tb.r9.c":"Hospital & salud<small>atención en isla</small>","tb.r9.cy":"Deriva a Puerto Vallarta · 2,5h","tb.r9.po":"<strong>Hospital privado en isla</strong> · 24/7","tb.r9.v":"La Porcada lidera",
+    "tb.r10.c":"Autonomía energética<small>planta propia</small>","tb.r10.cy":"Red pública CFE","tb.r10.po":"<strong>Planta privada</strong> para membresías isla","tb.r10.v":"La Porcada lidera",
+    "tb.r11.c":"Estacionalidad<small>ventana operativa</small>","tb.r11.cy":"Nov–abr temporada · may–oct huracanes","tb.r11.po":"<strong>Todo el año</strong> · fuera cinturón huracanes","tb.r11.v":"La Porcada lidera",
+    "tb.r12.c":"Brand equity<small>años de posicionamiento</small>","tb.r12.cy":"<strong>57 años</strong> · Brignone · mythology consolidada","tb.r12.po":"Nacimiento · Aman co-escribe marca día 1","tb.r12.v":"Careyes referente",
+    "tb.note":"Fuentes: careyes.com · lprluxury.com · jamesedition.com · mayaluxe.com · wikipedia.org · datos internos La Porcada 2026. Cifras indicativas de mercado.",
+    "th.eyebrow":"La tesis",
+    "th.h1":"No competimos con Careyes.",
+    "th.h2":"Lo elevamos a isla.",
+    "th.p1":"Careyes seguirá siendo el benchmark histórico del lujo mexicano. Sus 57 años, su polo, su clientela italiana heredada —nada de eso está en discusión. Lo que decimos es distinto: cuando un inversor global compara dónde colocar USD 25M en una Beach House o USD 200M en un Oasis, La Porcada gana en diez de doce criterios técnicos.",
+    "th.p2":"Gana en arquitectura porque Denniston firma ambos productos. Gana en membresía porque el embudo 30.000 → 500 → 50 es matemáticamente más estricto que cualquier club privado. Gana en vida porque la isla tiene casino, hípica y espectáculos donde Careyes cierra al anochecer. Gana en autosuficiencia porque produce su propia carne, su agua, su energía. Gana en salud porque tiene hospital en isla. Gana en estacionalidad porque Chiriquí no tiene huracanes.",
+    "th.p3":"Careyes conserva dos ventajas: 57 años de historia y el polo. La Porcada no necesita ni una ni otro. La historia la aporta Aman. El polo no encaja en una isla de 437 ha donde el 95% es bosque protegido. Y eso, paradójicamente, es también una victoria: en La Porcada, lo que no se hace es tan importante como lo que se hace.",
+    "th.kicker":"Conclusión para el comité de inversión",
+    "th.close":"« La Porcada no es el próximo Careyes. Es lo que Careyes habría sido si se hubiera construido hoy, en una isla, con Denniston, con Aman, con casino, con hospital propio y sin huracanes. »",
+    "foot.tag":"Investment Pioneer",
+    "foot.l1":"Isla Porcada · Chiriquí · Panamá",
+    "foot.motto":"« La naturaleza no se domestica, se reverencia. »"
+  },
+  en: {
+    "hero.eyebrow":"Market comparison · Chapter 24",
+    "hero.h1":"La Porcada",
+    "hero.h2":"Costa Careyes",
+    "hero.sub":"Fifty-seven years of Mexican legacy against an island with two unique assets: USD 25M Beach Houses designed by Denniston and bespoke Oasis from USD 200M. Selective membership, nightlife, equestrian and total self-sufficiency.",
+    "hero.loc":"Jalisco MX · Chiriquí PA · 2026",
+    "hero.tag":"« La Porcada inherits Careyes' positioning and elevates it to island. »",
+    "m1":"Beach Houses USD 25M · Denniston",
+    "m2":"Oasis from USD 200M · bespoke",
+    "m3":"30,000 memberships → 500 finalists → 50 villas",
+    "m4":"Casino · equestrian · Brahman cattle own",
+    "m5":"Island hospital · private plant · own spring",
+    "ctx.eyebrow":"The context",
+    "ctx.h1":"Two Pacifics,",
+    "ctx.h2":"two ages.",
+    "ctx.p1":"<strong>Costa Careyes</strong> was born in 1968 when Italian Gian Franco Brignone discovered 15 km of virgin coastline in Jalisco. Over five decades, he built a universe of vaulted casitas, private villas, ocean castles, two polo fields and a boutique hotel. It is the consolidated benchmark of Mexican luxury, with half a century of brand equity and a European clientele inherited across generations.",
+    "ctx.p2":"<strong>La Porcada</strong> is born now. A 437-hectare island in Chiriquí, Panama, with two unique products: <strong>Beach Houses</strong> at USD 25M designed by Denniston and bespoke <strong>Oasis</strong> from USD 200M. Selective membership from 30,000 to 500 finalists, nightlife with casino and equestrian, self-sufficiency with own spring, orchard, Brahman cattle and private hospital. Careyes has none of this.",
+    "k1":"Careyes founded / La Porcada launches",
+    "k2":"Beach Houses USD 25M · Oasis USD 200M+",
+    "k3":"Membership finalists · 1.67%",
+    "k4":"Self-sufficiency · hospital · own plant",
+    "pr.eyebrow":"Two assets · two scales",
+    "pr.h1":"Two products,",
+    "pr.h2":"one island.",
+    "pr.lead":"Careyes sells premium villas at USD 10–25M built in the 80s. La Porcada sells two unprecedented products: minimalist Beach Houses at USD 25M signed by Denniston, and bespoke Oasis from USD 200M with Aman service. Two scales, two filters, one island.",
+    "bh.badge":"Asset I · For sale",
+    "bh.name":"Beach Houses · Beachfront",
+    "bh.k1":"Plot","bh.k2":"Construction","bh.k3":"Design","bh.k4":"Pool","bh.k5":"Roof","bh.k6":"Energy",
+    "bh.desc":"Minimalist house of 250 m² per floor (GF + 1F), beachfront, infinity pool bordering the plot with the beach. Condominium regime subject to membership. 50 total units. Filter: 500 finalists out of 30,000 approved memberships.",
+    "os.badge":"Asset II · Bespoke",
+    "os.name":"Oasis · The super-villa",
+    "os.k1":"Plot","os.k2":"Main house","os.k3":"Staff house","os.k4":"Design","os.k5":"Service","os.k6":"Process",
+    "os.desc":"8 bespoke Oasis, the most elite scale of the resort. Main house of 1,500 m² on two floors + 250 m² house for owner's staff. No membership process: the client arrives by direct invitation and order. Aman service integrated across the island.",
+    "mb.eyebrow":"Membership · selective funnel",
+    "mb.h1":"30,000 members.",
+    "mb.h2":"50 villas.",
+    "mb.lead":"As in Careyes, the membership is studied and approved or denied. But at La Porcada the filter is mathematically stricter: only 500 out of 30,000 approved memberships make it to the final to acquire the 50 Beach Houses. The Oasis are outside the process — bespoke, even more elite.",
+    "mb.s1.t":"Potential memberships",
+    "mb.s1.d":"Applications studied and approved or denied after UHNWI profile review. First customer quality filter.",
+    "mb.s1.tag":"Study & approval",
+    "mb.s2.t":"Selected finalists",
+    "mb.s2.d":"Only 1.67% of approved memberships make it to the final. Statistically stricter filter than any private club in the world.",
+    "mb.s2.tag":"1.67% of total",
+    "mb.s3.t":"Beach Houses for sale",
+    "mb.s3.d":"50 Beach Houses at USD 25M beachfront, Denniston design, condominium regime. The real offer closes the funnel.",
+    "mb.s3.tag":"USD 25M each",
+    "mb.s4.t":"Oasis · outside the process",
+    "mb.s4.d":"The 8 Oasis do not enter the membership funnel. They are bespoke, by invitation. The most elite scale of the resort.",
+    "mb.s4.tag":"USD 200M+ · bespoke",
+    "mb.note.k":"The financial argument",
+    "mb.note.b":"« A selective membership turns 50 Beach Houses into 50 assets with guaranteed resale. Mathematical scarcity — 500 finalists for 50 units — sustains the USD 25M price and projects revaluation. »",
+    "il.eyebrow":"Island life · what Careyes doesn't have",
+    "il.h1":"Nature by day.",
+    "il.h2":"Life by night.",
+    "il.lead":"Careyes closes at nightfall. La Porcada doesn't. The island has nightlife with casino and shows, equestrian tournaments, dressage and riding. It produces its own Brahman beef, its spring water, its orchard. And houses non-resident staff in a dedicated villa, with a private hospital and exclusive energy plant for memberships.",
+    "il.c1.t":"Casino & shows","il.c1.d":"Nightlife with private casino, live shows and elite circuit. Careyes has no casino.",
+    "il.c2.t":"Equestrian · tournaments & dressage","il.c2.d":"30 horses, equestrian tournaments, dressage and riding. No polo (the island doesn't allow it), but a complete equestrian program.",
+    "il.c3.t":"Own Brahman beef","il.c3.d":"300 free-range Brahman cattle. Own beef for resort F&B. Total traceability.",
+    "il.c4.t":"Water spring","il.c4.d":"Own spring on the island. Bottled water from the resort, no external dependency. Hydrological cycle intact.",
+    "il.c5.t":"Organic orchard","il.c5.d":"Own production of fruits and vegetables for F&B. Zero transport emissions, maximum freshness.",
+    "il.c6.t":"Employees' villa","il.c6.d":"Villa dedicated to non-resident staff on the continent. Staff housed on island, controlled rotation.",
+    "il.c7.t":"Private hospital","il.c7.d":"Own hospital on the island. 24/7 medical care for guests and staff. Careyes refers to Puerto Vallarta.",
+    "il.c8.t":"Private energy plant","il.c8.d":"Exclusive plant for island memberships. Total energy autonomy, no public grid.",
+    "il.c9.t":"Aman across the island","il.c9.d":"Aman service integrated, not only in hotel. Every villa, every Oasis, every experience. World-class operation.",
+    "px.eyebrow":"Price comparison",
+    "px.h1":"What it costs",
+    "px.h2":"what is charged.",
+    "px.cy.label":"Costa Careyes · premium villas",
+    "px.cy.desc":"Documented range: Casa Encantada USD 9.99M, 6/8 villa USD 15M, oceanfront trophy USD 25M. 80s–90s construction, no sustainable system, no mathematical selective membership.",
+    "px.vs":"vs",
+    "px.po.label":"La Porcada · Beach Houses",
+    "px.po.desc":"50 Beach Houses, 1,000 m² plot, 500 m² construction, Denniston, infinity pool beachfront, green roofs, solar power and own water. Membership: 500 finalists out of 30,000.",
+    "px.cy2.label":"Careyes · daily rental",
+    "px.cy2.desc":"Villa Careyes 4 (6 beds, 14 pax): USD 2,500–6,800/night. High season with chef USD 7,000/night. Boutique hotel ADR USD 800–1,500.",
+    "px.po2.label":"La Porcada · Beach Houses · Aman management",
+    "px.po2.desc":"Beach Houses in condominium regime managed by Aman. The owner enjoys 45 days per year; the rest Aman operates the unit as a premium hotel (estimated ADR USD 35,000+/night). The Oasis remain outside any rental or condominium regime: pure possession, so elite they don't enter the market.",
+    "tb.eyebrow":"Comparative matrix · 12 criteria",
+    "tb.h1":"Where it wins,",
+    "tb.h2":"where it inherits.",
+    "tb.c1":"Criterion","tb.c2":"Costa Careyes","tb.c3":"La Porcada","tb.c4":"Verdict",
+    "tb.r1.c":"Beach House price<small>USD · range</small>","tb.r1.cy":"USD 10–25M · 80s construction","tb.r1.po":"<strong>USD 25M</strong> · Denniston · 500 m²","tb.r1.v":"La Porcada leads",
+    "tb.r2.c":"Trophy villa price<small>USD · top segment</small>","tb.r2.cy":"USD 25M (oceanfront)","tb.r2.po":"<strong>USD 200M+</strong> · bespoke Oasis","tb.r2.v":"La Porcada leads",
+    "tb.r3.c":"Selective membership<small>buyer filter</small>","tb.r3.cy":"Yes · profile study approval","tb.r3.po":"<strong>30,000 → 500 finalists</strong> → 50 villas","tb.r3.v":"La Porcada leads",
+    "tb.r4.c":"Architectural design<small>signature and authorship</small>","tb.r4.cy":"Various · Brignone, Villaseñor","tb.r4.po":"<strong>Denniston Architects</strong> on both products","tb.r4.v":"La Porcada leads",
+    "tb.r5.c":"Sustainability<small>energy and materials</small>","tb.r5.cy":"80s concrete · no renewable system","tb.r5.po":"<strong>Solar + own water + CLT + green roofs</strong>","tb.r5.v":"La Porcada leads",
+    "tb.r6.c":"Nightlife<small>casino and shows</small>","tb.r6.cy":"Restaurant + bar · no casino","tb.r6.po":"<strong>Private casino + live shows</strong>","tb.r6.v":"La Porcada leads",
+    "tb.r7.c":"Equestrian & riding<small>equestrian program</small>","tb.r7.cy":"<strong>Polo · 2 fields · 150 horses</strong>","tb.r7.po":"Dressage · tournaments · 30 horses · no polo","tb.r7.v":"Careyes benchmark",
+    "tb.r8.c":"Food self-sufficiency<small>beef, water, orchard</small>","tb.r8.cy":"Import · no own production","tb.r8.po":"<strong>Brahman + spring + own orchard</strong>","tb.r8.v":"La Porcada leads",
+    "tb.r9.c":"Hospital & health<small>island care</small>","tb.r9.cy":"Refers to Puerto Vallarta · 2.5h","tb.r9.po":"<strong>Private hospital on island</strong> · 24/7","tb.r9.v":"La Porcada leads",
+    "tb.r10.c":"Energy autonomy<small>own plant</small>","tb.r10.cy":"Public grid CFE","tb.r10.po":"<strong>Private plant</strong> for island memberships","tb.r10.v":"La Porcada leads",
+    "tb.r11.c":"Seasonality<small>operational window</small>","tb.r11.cy":"Nov–Apr season · May–Oct hurricanes","tb.r11.po":"<strong>Year-round</strong> · outside hurricane belt","tb.r11.v":"La Porcada leads",
+    "tb.r12.c":"Brand equity<small>years of positioning</small>","tb.r12.cy":"<strong>57 years</strong> · Brignone · consolidated mythology","tb.r12.po":"Birth · Aman co-writes brand day 1","tb.r12.v":"Careyes benchmark",
+    "tb.note":"Sources: careyes.com · lprluxury.com · jamesedition.com · mayaluxe.com · wikipedia.org · La Porcada internal data 2026. Indicative market figures.",
+    "th.eyebrow":"The thesis",
+    "th.h1":"We don't compete with Careyes.",
+    "th.h2":"We elevate it to island.",
+    "th.p1":"Careyes will remain the historical benchmark of Mexican luxury. Its 57 years, its polo, its inherited Italian clientele — none of that is in dispute. What we say is different: when a global investor compares where to place USD 25M in a Beach House or USD 200M in an Oasis, La Porcada wins on ten of twelve technical criteria.",
+    "th.p2":"It wins on architecture because Denniston signs both products. It wins on membership because the 30,000 → 500 → 50 funnel is mathematically stricter than any private club. It wins on life because the island has casino, equestrian and shows where Careyes closes at nightfall. It wins on self-sufficiency because it produces its own beef, water, energy. It wins on health because it has a hospital on island. It wins on seasonality because Chiriquí has no hurricanes.",
+    "th.p3":"Careyes retains two advantages: 57 years of history and polo. La Porcada needs neither. History is provided by Aman. Polo doesn't fit on a 437-hectare island where 95% is protected forest. And that, paradoxically, is also a victory: at La Porcada, what is not done is as important as what is done.",
+    "th.kicker":"Conclusion for the investment committee",
+    "th.close":"« La Porcada is not the next Careyes. It is what Careyes would have been if it had been built today, on an island, with Denniston, with Aman, with casino, with own hospital and without hurricanes. »",
+    "foot.tag":"Investment Pioneer",
+    "foot.l1":"Isla Porcada · Chiriquí · Panama",
+    "foot.motto":"« Nature is not domesticated, it is revered. »"
+  }
+};
+
+function applyLanguage(lang){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(translations[lang][key] !== undefined){
+      el.innerHTML = translations[lang][key];
+    }
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+});
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold:0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+applyLanguage('es');
+</script>
+</body>
+</html>
